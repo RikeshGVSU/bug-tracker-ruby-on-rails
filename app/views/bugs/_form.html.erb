@@ -1,0 +1,49 @@
+<%= form_with(model: bug, local: true) do |form| %>
+  <% if bug.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+      <ul>
+      <% bug.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_type %>
+    <%= form.select :issue_type, Bug.issue_types.keys, selected: @bug.issue_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.select :priority, Bug.priorities.keys, selected: @bug.priority %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Bug.statuses.keys, selected: @bug.status %>
+
+  </div>
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select :user_id,
+      options_for_select(User.all.collect {|a| ["#{a.lname},#{a.fname}", a.id]},
+       selected: (@bug.user ? @bug.user.id : User.first.id)), {} %>
+</div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
