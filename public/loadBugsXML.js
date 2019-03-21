@@ -38,7 +38,7 @@
     console.log("Click!");
 
     // Replace URL below with the URL for your server.
-    ajax.open("GET", 'http://localhost:3000/bugs.xml');
+    ajax.open("GET", 'https://bug-overflow-cis658.herokuapp.com/bugs.xml');
     ajax.onreadystatechange = function () {
       console.log("Ajax state: " + ajax.readyState);
       if (ajax.readyState === 4 && ajax.status === 200) {
