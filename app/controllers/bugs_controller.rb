@@ -5,6 +5,11 @@ class BugsController < ApplicationController
   # GET /bugs.json
   def index
     @bugs = Bug.all
+    respond_to do |format|
+     format.html {render :index}
+     format.json {render :index, status: :ok}
+     format.xml {render xml: @bugs.as_json}
+    end 
   end
 
   # GET /bugs/1
@@ -23,7 +28,7 @@ class BugsController < ApplicationController
 
   # POST /bugs
   # POST /bugs.json
-  def create
+  def create 
     @bug = Bug.new(bug_params)
     user = User.find(bug_params[:user_id])
     @bug.build_user(:id => user.id)

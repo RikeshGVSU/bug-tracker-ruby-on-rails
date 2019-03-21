@@ -1,4 +1,4 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= bootstrap_form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,24 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :fname %>
-    <%= form.text_field :fname %>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= form.text_field :fname, class: "form-control", hide_label: true, placeholder: "First Name" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :lname %>
-    <%= form.text_field :lname %>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= form.text_field :lname, class: "form-control", hide_label: true, placeholder: "Last Name" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= form.text_field :email, class: "form-control" , hide_label: true, placeholder: "Email"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :thumbnail %>
-    <%= form.text_field :thumbnail %>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= form.text_field :thumbnail, class: "form-control", hide_label: true, placeholder: "Image" %>
+    </div>
   </div>
 
   <div class="actions">
