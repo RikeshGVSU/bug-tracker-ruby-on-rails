@@ -1,0 +1,27 @@
+<div class="jumbotron">
+ <div class="container">
+ <h1>Let's Catch Some Bugs</h1>
+ <p>Bug in my code! It's a feature</p>
+ <p><a class="btn btn-primary btn-lg" href="/bugs" role="button">Bugs</a></p>
+ </div>
+ </div>
+
+ <div class="container-fluid">
+ <!-- Example row of columns -->
+ <div class="row">
+<% @bugs.each do |bug| %>
+ <div class="col-md-4">
+ <h2><%= bug.title%></h2>
+ <p><%=bug.description.truncate_words(30)%></p>
+ <p>
+ <%= link_to 'Read more >', bug, class: "btn btn-default"%>
+ </p>
+ </div>
+<% end %>
+ </div>
+ <button id="loadButton">Load</button>
+ <hr>
+ <footer>
+ <p>&copy; 2018 Company, Inc.</p>
+ </footer>
+</div> 
