@@ -28,7 +28,7 @@ class BugsController < ApplicationController
 
   # POST /bugs
   # POST /bugs.json
-  def create
+  def create 
     @bug = Bug.new(bug_params)
     user = User.find(bug_params[:user_id])
     @bug.build_user(:id => user.id)
