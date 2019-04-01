@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
 	get 'bugs/index'
   resources :users
   resources :bugs
