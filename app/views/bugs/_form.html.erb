@@ -1,6 +1,6 @@
-<%= form_with(model: bug, local: true) do |form| %>
+<%= form_with(model: bug, local: true, :class=>"form-horizontal") do |form| %>
   <% if bug.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
 
       <ul>
@@ -11,39 +11,64 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= form.label :title %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= form.label :description %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :description, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :issue_type %>
-    <%= form.select :issue_type, Bug.issue_types.keys, selected: @bug.issue_type %>
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= form.label :issue_type %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :issue_type, Bug.issue_types.keys, selected: @bug.issue_type, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :priority %>
-    <%= form.select :priority, Bug.priorities.keys, selected: @bug.priority %>
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= form.label :priority %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :priority, Bug.priorities.keys, selected: @bug.priority, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Bug.statuses.keys, selected: @bug.status %>
-
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= form.label :status %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :status, Bug.statuses.keys, selected: @bug.status, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id,
-      options_for_select(User.all.collect {|a| ["#{a.lname},#{a.fname}", a.id]},
-       selected: (@bug.user ? @bug.user.id : User.first.id)), {} %>
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= form.label :user_id %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :user_id, 
+        options_for_select(User.all.collect {|a| ["#{a.lname},#{a.fname}", a.id]},
+         selected: (@bug.user ? @bug.user.id : User.first.id)), {}, class: "form-control" %>
+    </div>
 </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <div class="col-md-8">
+      <%= form.submit class: "btn btn-primary"%>
+    </div>
   </div>
 <% end %>

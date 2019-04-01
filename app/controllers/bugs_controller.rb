@@ -5,6 +5,11 @@ class BugsController < ApplicationController
   # GET /bugs.json
   def index
     @bugs = Bug.all
+    respond_to do |format|
+     format.html {render :index}
+     format.json {render :index, status: :ok}
+     format.xml {render xml: @bugs.as_json}
+    end 
   end
 
   # GET /bugs/1

@@ -2,27 +2,27 @@
 
 <h1>Users</h1>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Fname</th>
-      <th>Lname</th>
-      <th>Email</th>
-      <th>Thumbnail</th>
-      <th colspan="3"></th>
+      <th scope="col">Fname</th>
+      <th scope="col">Lname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Thumbnail</th>
+      <th scope="col" colspan="3">Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.fname %></td>
-        <td><%= user.lname %></td>
-        <td><%= user.email %></td>
-        <td><%= user.thumbnail %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td scope="col"><%= user.fname %></td>
+        <td scope="col"><%= user.lname %></td>
+        <td scope="col"><%= user.email %></td>
+        <td scope="col"><%= user.thumbnail %></td>
+        <td scope="col"><%= link_to 'Show', user %></td>
+        <td scope="col"><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td scope="col"><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
